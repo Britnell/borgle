@@ -3,9 +3,13 @@ import { useGuess } from "./guess";
 const Controls = () => {
   const guess = useGuess();
 
-  const submit = () => {
-    const word = guess.value.map((g) => g.letter);
-    console.log(" submit ", word);
+  const submit = async () => {
+    const word = guess.value.map((g) => g.letter).join("");
+
+    const resp = await fetch("/.netlify/functions/lookup?word=" + word)
+      .then((res) => res.json())
+      .catch(console.log);
+    console.log(" word valid : ", resp);
   };
 
   const clear = () => (guess.value = []);
