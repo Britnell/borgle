@@ -29,37 +29,37 @@ const lexicon = {
   z: () => require("../dict/z.json"),
 };
 
-const find_dict = (first_letter: string) =>
-  lexicon[first_letter.toLowerCase()]();
+const find_dict = (first_letter: string) => {
+  const letter = first_letter.toLowerCase();
+  const code = letter.charCodeAt(0);
+  if (code < 97 || code > 122) throw new Error(" invalid letter character ");
+
+  return lexicon[letter]();
+};
 
 const lookup = (word: string) => {
   if (word.length === 0) throw new Error(" empty string provided");
 
   const dict = find_dict(word[0]);
-  // console.log(" lookup : ", word);
-
   return dict.hasOwnProperty(word);
 };
 
 export const handler = async (event) => {
   const word = event.queryStringParameters?.word;
 
-  if (!word)
+  try {
+    if (!word) throw new Error(" xx ");
+
+    const valid = lookup(word);
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ word, valid }),
+    };
+  } catch (e) {
     return {
       statusCode: 400,
-      body: "Invalid request - no word",
+      body: JSON.stringify({ error: e.message }),
     };
-
-  const res = lookup(word);
-  // console.log("lookup", { word, res });
-
-  const body = {
-    word,
-    valid: res,
-  };
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(body),
-  };
+  }
 };
