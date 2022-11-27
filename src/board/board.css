@@ -1,0 +1,72 @@
+/* Controls  */
+
+.controls {
+  /* margin: 0.5rem 0; */
+}
+
+.controls .row {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  min-height: 60px;
+}
+
+.controls button {
+  height: 60px;
+  border: none;
+  border-radius: 0;
+  font-size: 1.4rem;
+}
+
+.guessrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.controls .submit {
+  flex: 1 0;
+  /* flex: 0 0 60px; */
+  font-size: 1.2rem;
+  background-color: rgb(149, 203, 250);
+}
+
+.buttons button {
+  flex: 1 0;
+}
+
+/* Game Board   */
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.letter {
+  width: 60px;
+  aspect-ratio: 1;
+  font-size: 2rem;
+  text-align: center;
+  background-color: rgb(252, 241, 114);
+  border: 4px solid rgb(252, 241, 114);
+  /* background: #ddd; */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  transition: border 0.1s linear;
+}
+
+.last {
+  border: 4px solid rgb(81, 245, 95);
+  transition: border 0.4s linear;
+}
