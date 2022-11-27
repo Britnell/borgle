@@ -1,7 +1,24 @@
 /* Controls  */
 
+.boardcontainer {
+  position: relative;
+}
+
+.guesscount {
+  --h: 40px;
+  position: absolute;
+  right: 0.5rem;
+  top: calc(var(--h) * -1 - 0.5rem);
+  background: var(--active);
+  width: var(--h);
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+}
+
 .controls {
-  /* margin: 0.5rem 0; */
+  padding: 0 0.5rem;
 }
 
 .controls .row {
@@ -11,11 +28,16 @@
   min-height: 60px;
 }
 
-.controls button {
+button {
   height: 60px;
   border: none;
   border-radius: 0;
   font-size: 1.4rem;
+}
+button.start {
+  display: block;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .guessrow {
@@ -32,6 +54,16 @@
   background-color: rgb(149, 203, 250);
 }
 
+.controls .submit.occured {
+  background-color: var(--selected);
+  cursor: no-drop;
+}
+
+.buttons {
+  max-width: calc(240px + 3 * 0.5rem);
+  margin: 0 auto;
+}
+
 .buttons button {
   flex: 1 0;
 }
@@ -43,6 +75,7 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 .row {
@@ -56,17 +89,29 @@
   aspect-ratio: 1;
   font-size: 2rem;
   text-align: center;
-  background-color: rgb(252, 241, 114);
-  border: 4px solid rgb(252, 241, 114);
-  /* background: #ddd; */
+  text-transform: capitalize;
+  font-weight: 700;
+
+  --background: var(--yellow);
+  --border: var(--yellow);
+  background-color: var(--background);
+  border: 4px solid var(--border);
+
   display: grid;
   place-items: center;
   cursor: pointer;
 
-  transition: border 0.1s linear;
+  transition: border, background-color 0.1s linear;
 }
 
 .last {
-  border: 4px solid rgb(81, 245, 95);
+  --background: var(--selected);
+  --border: black;
+  /* border: 4px solid rgb(81, 245, 95); */
   transition: border 0.4s linear;
+}
+
+.selected {
+  --border: var(--selected);
+  --background: var(--selected);
 }

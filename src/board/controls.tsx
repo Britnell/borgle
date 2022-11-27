@@ -1,15 +1,21 @@
-import { useGuess } from "./guess";
+import { useRef } from "preact/hooks";
+import { useGuess } from "../util/store";
+import { lookupWord } from "../util/game";
+import { batch } from "@preact/signals";
 
 const Controls = () => {
-  const guess = useGuess();
+  const submitRef = useRef(null);
+  const { guess, word, guesses, hasOccured } = useGuess();
 
   const submit = async () => {
-    const word = guess.value.map((g) => g.letter).join("");
+    const w = word.value;
+    console.log("submit ", w);
 
-    const resp = await fetch("/.netlify/functions/lookup?word=" + word)
-      .then((res) => res.json())
-      .catch(console.log);
-    console.log(" word valid : ", resp);
+    guesses.value = [...guesses.value, w];
+    // guess.value = [];
+    // const resp = await lookupWord(_word).catch((e) => {
+    //   console.log(" err ");
+    // });
   };
 
   const clear = () => (guess.value = []);
@@ -21,7 +27,12 @@ const Controls = () => {
         <div className="row buttons">
           <button onClick={remove}>{"<<"}</button>
           <button onClick={clear}>Clear</button>
-          <button className="submit" onClick={submit}>
+          <button
+            ref={submitRef}
+            className={`submit ${hasOccured.value ? "occured" : ""} `}
+            onClick={submit}
+            disabled={hasOccured.value}
+          >
             +
           </button>
         </div>

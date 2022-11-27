@@ -1,9 +1,22 @@
 body {
   margin: 0;
+
+  --yellow: rgb(254, 242, 164);
+  --active: rgb(35, 221, 51);
+  --selected: rgb(130, 201, 136);
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header,
 main {
   max-width: 400px;
   margin: 0 auto;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 2;
+  padding-left: 1rem;
 }

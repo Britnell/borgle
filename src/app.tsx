@@ -1,26 +1,52 @@
-import { useState } from "preact/hooks";
-import "./app.css";
 import Board from "./board";
-import { GuessProvider } from "./board/guess";
+import "./app.css";
+import { useState } from "preact/hooks";
+import { createBoard } from "./util/game";
+import Counter from "./counter";
+import Results from "./results";
+
+export type StateT = {
+  playing: boolean;
+  time: number;
+};
 
 export function App() {
-  //
-  const letters = [
-    "abcd".split(""),
-    "fghi".split(""),
-    "klmn".split(""),
-    "prst".split(""),
-  ];
+  const playState = useState("ready");
+  const [letters, setLetter] = useState<Array<Array<string>> | null>(null);
+  const [playing, setPlaying] = playState;
+
+  const start = () => {
+    const newLetters = createBoard();
+    setLetter(newLetters);
+    setPlaying("playing");
+  };
 
   return (
     <>
       <header>
-        <h1>Boggle</h1>
+        <h1>Borgle </h1>{" "}
+        {playing === "playing" && <Counter state={playState} />}
       </header>
       <main>
-        <GuessProvider>
-          <Board letters={letters} />
-        </GuessProvider>
+        {playing === "ready" && (
+          <div className="start">
+            <h2>Start a new game</h2>
+            <button className="button start" onClick={start}>
+              Start
+            </button>
+          </div>
+        )}
+        {playing === "playing" && letters && (
+          <>
+            <Board letters={letters} />
+          </>
+        )}
+        {playing === "finished" && (
+          <div>
+            <button onClick={() => setPlaying("ready")}>done</button>
+            <Results />
+          </div>
+        )}
       </main>
     </>
   );

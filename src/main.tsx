@@ -1,5 +1,11 @@
-import { render } from 'preact'
-import { App } from './app'
-import './index.css'
+import { render } from "preact";
+import { App } from "./app";
+import "./index.css";
+import { GuessProvider } from "./util/store";
 
-render(<App />, document.getElementById('app') as HTMLElement)
+render(
+  <GuessProvider>
+    <App />
+  </GuessProvider>,
+  document.getElementById("app") as HTMLElement
+);

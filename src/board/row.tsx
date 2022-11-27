@@ -1,7 +1,6 @@
 import Letter from "./letter";
 
 type Row = Array<string>;
-
 type RowProps = { letters: Row; row: number };
 
 const Row = ({ letters, row }: RowProps) => {
