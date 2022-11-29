@@ -4,7 +4,9 @@ import Board from "./board";
 import Counter from "./counter";
 import Results from "./results";
 
+import "./util/store";
 import { createBoard } from "./util/game";
+
 import "./app.css";
 
 export type StateT = {
@@ -17,7 +19,7 @@ export function App() {
   const [letters, setLetter] = useState<Array<Array<string>> | null>(null);
   const [playing, setPlaying] = playState;
 
-  const start = () => {
+  const startGame = () => {
     const newLetters = createBoard();
     setLetter(newLetters);
     setPlaying("playing");
@@ -33,7 +35,7 @@ export function App() {
         {playing === "ready" && (
           <div className="start">
             <h2>Start a new game</h2>
-            <button className="button start" onClick={start}>
+            <button className="button start" onClick={startGame}>
               Start
             </button>
           </div>
@@ -46,7 +48,7 @@ export function App() {
         {playing === "finished" && (
           <div>
             <button onClick={() => setPlaying("ready")}>done</button>
-            <Results />
+            <Results restart={startGame} />
           </div>
         )}
       </main>

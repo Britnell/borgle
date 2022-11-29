@@ -9,7 +9,7 @@ type Timeout = ReturnType<typeof setTimeout> | null;
 export default function Counter({ state }: Props) {
   const [playing, setPlaying] = state;
 
-  const [time, setTime] = useState(120);
+  const [time, setTime] = useState(3 * 60);
   const timer = useSignal<Timeout>(null);
 
   useEffect(() => {

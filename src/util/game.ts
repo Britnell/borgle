@@ -63,5 +63,12 @@ export const checkResults = async (list: string[]) =>
   }).then((res) => res.json());
 
 export const scoreWord = (word: string) => {
-  return 3;
+  const l = word.length;
+  if (l == 3) return 1;
+  if (l == 4) return 1;
+  if (l === 5) return 2;
+  if (l === 6) return 3;
+  if (l === 7) return 5;
+  if (l >= 8) return 11;
+  return 0;
 };

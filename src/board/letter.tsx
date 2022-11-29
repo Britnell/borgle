@@ -1,6 +1,6 @@
 import { useContext, useRef } from "preact/hooks";
-import { GuessContext, GuessT } from "../util/store";
 import { useComputed } from "@preact/signals";
+import { guess, GuessT, lastLetter } from "../util/store";
 
 type LetterProps = {
   col: number;
@@ -28,9 +28,9 @@ const isValid = (guesses: GuessT[], row: number, col: number): boolean => {
   if (guesses.length === 0) return true;
 
   // check neighbour
-  const last = guesses[guesses.length - 1];
-  if (Math.abs(last.row - row) > 1) return false;
-  if (Math.abs(last.col - col) > 1) return false;
+  const lastLetter = guesses[guesses.length - 1];
+  if (Math.abs(lastLetter.row - row) > 1) return false;
+  if (Math.abs(lastLetter.col - col) > 1) return false;
 
   // use letters only once
   const self = guesses.find((g) => g.row === row && g.col === col);
@@ -42,25 +42,22 @@ const isValid = (guesses: GuessT[], row: number, col: number): boolean => {
 const Letter = ({ col, row, letter }: LetterProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { guess, last } = useContext(GuessContext);
-
   const isSelected = useComputed(() =>
     guess.value.find((g) => g.row === row && g.col === col) ? true : false
   );
 
   const isLast = useComputed(() => {
-    if (!last.value) return false;
-    return last.value.row === row && last.value.col === col ? true : false;
+    if (!lastLetter.value) return false;
+    return lastLetter.value.row === row && lastLetter.value.col === col
+      ? true
+      : false;
   });
 
   const click = () => {
     if (!ref.current) return;
 
     const valid = isValid(guess.value, row, col);
-    if (!valid) {
-      shake(ref.current);
-      return console.log(" X ");
-    }
+    if (!valid) return shake(ref.current);
 
     guess.value = [
       ...guess.value,

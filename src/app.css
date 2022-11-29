@@ -4,6 +4,7 @@ body {
   --yellow: rgb(254, 242, 164);
   --active: rgb(35, 221, 51);
   --selected: rgb(130, 201, 136);
+  --gray: rgb(233, 233, 237);
 
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

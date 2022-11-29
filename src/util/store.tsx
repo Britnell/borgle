@@ -1,6 +1,4 @@
-import { effect, Signal, signal, useComputed } from "@preact/signals";
-import { ComponentChildren, createContext } from "preact";
-import { useContext } from "preact/hooks";
+import { computed, effect, signal } from "@preact/signals";
 
 export type GuessT = {
   row: number;
@@ -9,52 +7,25 @@ export type GuessT = {
   ref: any;
 };
 
-export type ScoreT = {
+export const guess = signal<GuessT[]>([]);
+export const guesses = signal<string[]>([]);
+
+export type ResultsT = {
   word: string;
   valid: boolean;
   score: number;
 };
 
-type ContextType = {
-  guess: Signal<Array<GuessT>>;
-  word: Signal<string>;
-  last: Signal<GuessT | null>;
-  guesses: Signal<Array<string>>;
-  hasOccured: Signal<boolean>;
-  score: Signal<Array<ScoreT>>;
-};
+export const results = signal<ResultsT[]>([]);
 
-export const GuessContext = createContext({} as ContextType);
+export const word = computed(() => guess.value.map((g) => g.letter).join(""));
 
-export const GuessProvider = ({
-  children,
-}: {
-  children: ComponentChildren;
-}) => {
-  const guess = signal<GuessT[]>([]);
-  const guesses = signal<string[]>([]);
-  const score = signal<ScoreT[]>([]);
+export const hasOccured = computed(() => guesses.value.includes(word.value));
+export const lastLetter = computed(() =>
+  guess.value.length === 0 ? null : guess.value[guess.value.length - 1]
+);
 
-  const word = useComputed(() => {
-    console.log("word");
-    return guess.value.map((g) => g.letter).join("");
-  });
-  const last = useComputed(() => {
-    console.log("last");
-    return guess.value.length === 0
-      ? null
-      : guess.value[guess.value.length - 1];
-  });
-  const hasOccured = useComputed(() => {
-    console.log("hasoccured");
-    return guesses.value.includes(word.value);
-  });
-
-  const value = { guess, word, last, guesses, hasOccured, score };
-
-  return (
-    <GuessContext.Provider value={value}>{children}</GuessContext.Provider>
-  );
-};
-
-export const useGuess = () => useContext(GuessContext);
+export const score = computed(() => {
+  console.log(" > total ", results.value);
+  return results.value.reduce((t, res) => t + (res.valid ? res.score : 0), 0);
+});
