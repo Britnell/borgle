@@ -50,7 +50,7 @@ const Letter = ({ col, row, letter }: LetterProps) => {
     const g = guess.value.findIndex(
       (letter) => letter.row === row && letter.col === col
     );
-    guess.value = guess.value.slice(0, g);
+    guess.value = guess.value.slice(0, g + 1);
   };
 
   const addletter = () =>

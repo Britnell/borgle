@@ -9,7 +9,7 @@ const Controls = () => {
     const w = word.value;
 
     guesses.value = [...guesses.value, w];
-    // guess.value = [];
+    guess.value = [];
 
     const resp = await lookupWord(w).catch((e) => {
       throw e;

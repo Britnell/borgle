@@ -30,10 +30,10 @@ export default function Results({ restart }: Props) {
             </li>
           ))}
         </ul>
-        <div>total : {score.value}</div>
+        <h4>Total Score : {score.value}</h4>
       </div>
       <div>
-        <h4>Nice one! - wnat to play again?</h4>
+        <h5>Nice one! - want to play again?</h5>
         <div>
           <button onClick={restartClick}>Restart</button>
         </div>
