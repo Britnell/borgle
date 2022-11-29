@@ -1,5 +1,3 @@
-// import { lookup } from "../dict/helper";
-
 const lexicon = {
   a: () => require("../dict/a.json"),
   b: () => require("../dict/b.json"),

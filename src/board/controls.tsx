@@ -1,21 +1,30 @@
+import { effect } from "@preact/signals";
 import { useRef } from "preact/hooks";
+import { lookupWord, scoreWord } from "../util/game";
 import { useGuess } from "../util/store";
-import { lookupWord } from "../util/game";
-import { batch } from "@preact/signals";
 
 const Controls = () => {
   const submitRef = useRef(null);
-  const { guess, word, guesses, hasOccured } = useGuess();
+  const { guess, word, guesses, hasOccured, score } = useGuess();
 
   const submit = async () => {
     const w = word.value;
     console.log("submit ", w);
 
     guesses.value = [...guesses.value, w];
-    // guess.value = [];
-    // const resp = await lookupWord(_word).catch((e) => {
-    //   console.log(" err ");
-    // });
+    guess.value = [];
+    const resp = await lookupWord(w).catch((e) => {
+      return { error: e.message };
+    });
+
+    score.value = [
+      ...score.value,
+      {
+        word: w,
+        valid: resp.valid,
+        score: scoreWord(w),
+      },
+    ];
   };
 
   const clear = () => (guess.value = []);

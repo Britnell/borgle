@@ -1,9 +1,11 @@
-import Board from "./board";
-import "./app.css";
 import { useState } from "preact/hooks";
-import { createBoard } from "./util/game";
+
+import Board from "./board";
 import Counter from "./counter";
 import Results from "./results";
+
+import { createBoard } from "./util/game";
+import "./app.css";
 
 export type StateT = {
   playing: boolean;

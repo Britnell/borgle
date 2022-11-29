@@ -4,17 +4,23 @@
   position: relative;
 }
 
+.score {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .guesscount {
   --h: 40px;
   position: absolute;
   right: 0.5rem;
   top: calc(var(--h) * -1 - 0.5rem);
   background: var(--active);
-  width: var(--h);
-  aspect-ratio: 1;
+  /* width: var(--h); */
+  /* aspect-ratio: 1; */
   display: grid;
   place-content: center;
-  border-radius: 50%;
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
 }
 
 .controls {

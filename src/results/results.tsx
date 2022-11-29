@@ -1,14 +1,11 @@
-import { effect } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
 import { checkResults } from "../util/game";
 import { useGuess } from "../util/store";
 
-type Props = {};
-
 export default function Results({}) {
-  const { guesses } = useGuess();
-
   const [loading, setLoading] = useState(true);
+
+  const { guesses } = useGuess();
 
   useEffect(() => {
     if (!loading) return;

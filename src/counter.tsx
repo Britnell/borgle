@@ -1,5 +1,5 @@
 import { useSignal } from "@preact/signals";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 type Props = {
   state: [string, any];
@@ -9,7 +9,7 @@ type Timeout = ReturnType<typeof setTimeout> | null;
 export default function Counter({ state }: Props) {
   const [playing, setPlaying] = state;
 
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(120);
   const timer = useSignal<Timeout>(null);
 
   useEffect(() => {

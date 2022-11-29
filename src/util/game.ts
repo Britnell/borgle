@@ -13,7 +13,7 @@ export const dice = [
   "EHRTVW".split(""),
   "EIOSST".split(""),
   "ELRTTY".split(""),
-  "HIMNUQu".split(""),
+  "HIMNUQ".split(""),
   "HLNNRZ".split(""),
 ];
 
@@ -61,3 +61,7 @@ export const checkResults = async (list: string[]) =>
     method: "POST",
     body: list.join(","),
   }).then((res) => res.json());
+
+export const scoreWord = (word: string) => {
+  return 3;
+};

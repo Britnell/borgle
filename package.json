@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "netlify dev",
-    "dev-site": "vite",
+    "dev": "vite",
     "nlf": "netlify",
     "nlf-dev": "netlify dev",
     "build": "tsc && vite build",

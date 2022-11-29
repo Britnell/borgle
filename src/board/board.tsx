@@ -1,9 +1,7 @@
-import { effect, Signal } from "@preact/signals";
-import { StateT } from "../app";
-import "./board.css";
 import Controls from "./controls";
 import Count from "./count";
 import Row from "./row";
+import "./board.css";
 
 type RowT = Array<string>;
 type BoardT = Array<RowT>;

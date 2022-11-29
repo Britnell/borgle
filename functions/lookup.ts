@@ -38,10 +38,11 @@ const find_dict = (first_letter: string) => {
 };
 
 const lookup = (word: string) => {
-  if (word.length === 0) throw new Error(" empty string provided");
+  const _word = word.toLowerCase();
+  if (_word.length === 0) throw new Error(" empty string provided");
 
-  const dict = find_dict(word[0]);
-  return dict.hasOwnProperty(word);
+  const dict = find_dict(_word[0]);
+  return dict.hasOwnProperty(_word);
 };
 
 export const handler = async (event) => {
