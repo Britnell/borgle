@@ -1,7 +1,5 @@
-import { effect, useComputed } from "@preact/signals";
 import { useRef } from "preact/hooks";
 import { lookupWord, scoreWord } from "../util/game";
-
 import { guess, guesses, hasOccured, results, word } from "../util/store";
 
 const Controls = () => {
@@ -11,11 +9,10 @@ const Controls = () => {
     const w = word.value;
 
     guesses.value = [...guesses.value, w];
-    guess.value = [];
+    // guess.value = [];
 
     const resp = await lookupWord(w).catch((e) => {
-      console.log(e.message);
-      return { error: e.message };
+      throw e;
     });
 
     const result = {

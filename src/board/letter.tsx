@@ -1,4 +1,4 @@
-import { useContext, useRef } from "preact/hooks";
+import { useRef } from "preact/hooks";
 import { useComputed } from "@preact/signals";
 import { guess, GuessT, lastLetter } from "../util/store";
 
@@ -23,19 +23,12 @@ const shake = (el: HTMLElement) => {
   el.animate(keyframes, options);
 };
 
-const isValid = (guesses: GuessT[], row: number, col: number): boolean => {
-  // is First
-  if (guesses.length === 0) return true;
+const isUsed = (row: number, col: number, guess: GuessT[]) =>
+  guess.find((g) => g.row === row && g.col === col) ? true : false;
 
-  // check neighbour
-  const lastLetter = guesses[guesses.length - 1];
-  if (Math.abs(lastLetter.row - row) > 1) return false;
-  if (Math.abs(lastLetter.col - col) > 1) return false;
-
-  // use letters only once
-  const self = guesses.find((g) => g.row === row && g.col === col);
-  if (self) return false;
-
+const isNeighbour = (row: number, col: number, guess: GuessT) => {
+  if (Math.abs(guess.row - row) > 1) return false;
+  if (Math.abs(guess.col - col) > 1) return false;
   return true;
 };
 
@@ -53,13 +46,15 @@ const Letter = ({ col, row, letter }: LetterProps) => {
       : false;
   });
 
-  const click = () => {
-    if (!ref.current) return;
+  const rollback = () => {
+    const g = guess.value.findIndex(
+      (letter) => letter.row === row && letter.col === col
+    );
+    guess.value = guess.value.slice(0, g);
+  };
 
-    const valid = isValid(guess.value, row, col);
-    if (!valid) return shake(ref.current);
-
-    guess.value = [
+  const addletter = () =>
+    (guess.value = [
       ...guess.value,
       {
         row,
@@ -67,7 +62,25 @@ const Letter = ({ col, row, letter }: LetterProps) => {
         letter,
         ref,
       },
-    ];
+    ]);
+
+  const click = () => {
+    if (!ref.current) return;
+
+    // first letter
+    if (!lastLetter.value) return addletter();
+
+    // has been used
+    if (isUsed(row, col, guess.value)) {
+      rollback();
+      return;
+    }
+
+    // neighbour
+    if (isNeighbour(row, col, lastLetter.value)) return addletter();
+
+    // Invalid letter
+    shake(ref.current); // animation
   };
 
   return (
