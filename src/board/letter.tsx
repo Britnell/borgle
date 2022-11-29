@@ -1,4 +1,4 @@
-import { useRef } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import { useComputed } from "@preact/signals";
 import { guess, GuessT, lastLetter } from "../util/store";
 
@@ -26,7 +26,7 @@ const shake = (el: HTMLElement) => {
 const isUsed = (row: number, col: number, guess: GuessT[]) =>
   guess.find((g) => g.row === row && g.col === col) ? true : false;
 
-const isNeighbour = (row: number, col: number, guess: GuessT) => {
+export const isNeighbour = (row: number, col: number, guess: GuessT) => {
   if (Math.abs(guess.row - row) > 1) return false;
   if (Math.abs(guess.col - col) > 1) return false;
   return true;

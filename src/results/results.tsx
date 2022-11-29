@@ -9,8 +9,6 @@ type Props = {
 };
 
 export default function Results({ restart }: Props) {
-  console.log(results.value);
-
   const restartClick = () => {
     results.value = [];
     guesses.value = [];

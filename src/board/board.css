@@ -2,13 +2,16 @@
 
 .boardcontainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .score {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 0.5rem;
 }
 
 .guesscount,
@@ -30,7 +33,6 @@
 }
 
 .controls .row {
-  margin-bottom: 0.5rem;
   display: flex;
   gap: 0.5rem;
   min-height: 60px;
@@ -82,7 +84,6 @@ button.start {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
   padding: 0 0.5rem;
 }
 
