@@ -1,8 +1,7 @@
 import Controls from "./controls";
-import Count from "./count";
+import Header from "./header";
 import "./board.css";
 import { useEffect, useRef } from "preact/hooks";
-import { useSignal } from "@preact/signals";
 import Letter, { isNeighbour, isUsed } from "./letter";
 import { guess, GuessT, lastLetter } from "../util/store";
 
@@ -10,6 +9,7 @@ type RowT = Array<string>;
 type BoardT = Array<RowT>;
 type BoardProps = {
   letters: BoardT;
+  state: [string, any];
 };
 
 const checkSquares = (x: number, y: number, w: number, h: number) => {
@@ -35,7 +35,7 @@ const checkSquares = (x: number, y: number, w: number, h: number) => {
 
 type PosType = number[];
 
-export default function Board({ letters }: BoardProps) {
+export default function Board({ letters, state }: BoardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const lastTouched = useRef<PosType>([]);
 
@@ -86,7 +86,7 @@ export default function Board({ letters }: BoardProps) {
 
   return (
     <div className="boardcontainer">
-      <Count />
+      <Header state={state} />
       <h3>Your Word : </h3>
       <div className="guessrow">
         {guess.value.map((g, i) => (

@@ -21,24 +21,35 @@ button.start {
   margin: 0 auto;
 }
 
-.score {
+.scorecontainer {
+  display: flex;
+  font-size: 1.5rem;
+}
+.scorecontainer button {
+  height: initial;
+}
+
+.count {
+  flex-grow: 1;
   display: flex;
   gap: var(--gap);
   justify-content: center;
 }
 
-.guesscount,
-.scorecount {
+.guess {
   border-radius: 1rem;
   padding: 0.1rem 0.5rem;
+  background: var(--blue);
 }
 
-.guesscount {
-  background: var(--gray);
-}
-
-.scorecount {
+.score {
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
   background: var(--active);
+}
+.exit {
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
 }
 
 .controls {
@@ -74,7 +85,6 @@ button.start {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: min(0.5rem, 2vw);
-  padding: 0 0.5rem;
 }
 
 .row {

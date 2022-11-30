@@ -29,7 +29,6 @@ export function App() {
     <>
       <header>
         <h1>Borgle </h1>{" "}
-        {playing === "playing" && <Counter state={playState} />}
       </header>
       <main>
         {playing === "ready" && (
@@ -42,7 +41,7 @@ export function App() {
         )}
         {playing === "playing" && letters && (
           <>
-            <Board letters={letters} />
+            <Board letters={letters} state={playState} />
           </>
         )}
         {playing === "finished" && (
