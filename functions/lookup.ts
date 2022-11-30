@@ -38,15 +38,27 @@ const find_dict = (first_letter: string) => {
 };
 
 const lookup = (word: string) => {
-  const _word = word.toLowerCase();
-  if (_word.length === 0) throw new Error(" empty string provided");
+  if (word.length === 0) throw new Error(" empty string provided");
+  const dict = find_dict(word[0]);
 
-  const dict = find_dict(_word[0]);
-  return dict.hasOwnProperty(_word);
+  // exists
+  if (dict.hasOwnProperty(word)) return true;
+
+  // plurals
+  if (word.slice(-1) === "s") {
+    const hasSingular = dict.hasOwnProperty(word.slice(0, -1));
+    if (hasSingular) return true;
+  }
+  if (word.slice(-2) === "es") {
+    const hasSingular = dict.hasOwnProperty(word.slice(0, -2));
+    if (hasSingular) return true;
+  }
+
+  return false;
 };
 
 export const handler = async (event) => {
-  const word = event.queryStringParameters?.word;
+  const word = event.queryStringParameters?.word.toLowerCase();
 
   try {
     if (!word) throw new Error(" xx ");
