@@ -86,6 +86,7 @@ const Letter = ({ col, row, letter }: LetterProps) => {
     <div
       ref={ref}
       onClick={click}
+      onTouchStart={click}
       className={[
         "letter",
         isLast.value ? "last" : isSelected.value ? "selected" : "",
