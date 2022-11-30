@@ -11,18 +11,6 @@
   margin: 0;
 }
 
-button {
-  height: 60px;
-  border: none;
-  border-radius: 0;
-  font-size: 1.4rem;
-}
-button.start {
-  display: block;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-
 .scoreheader {
   display: flex;
   flex-flow: row wrap;

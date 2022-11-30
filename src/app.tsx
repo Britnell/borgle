@@ -32,15 +32,60 @@ export function App() {
         <Header state={playState} />
       ) : (
         <header>
-          <h1>Borgle </h1>{" "}
+          <h1 className="title">BORGLE </h1>{" "}
         </header>
       )}
       {playing === "ready" && (
-        <main className="start">
+        <main className="ready">
           <h2>Start a new game</h2>
-          <button className="button start" onClick={startGame}>
-            Start
-          </button>
+          <div className="board">
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+
+            <button className="start" onClick={startGame}>
+              Start
+            </button>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+            <div className="letter">
+              <div className="square"></div>
+            </div>
+          </div>
         </main>
       )}
       {playing === "playing" && letters && (
