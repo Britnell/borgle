@@ -88,8 +88,6 @@ export default function Board({ letters }: BoardProps) {
           ))
         )}
       </div>
-      <div ref={logRef}></div>
-
       <Controls />
     </div>
   );

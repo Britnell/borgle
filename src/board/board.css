@@ -4,13 +4,26 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  /* align-items: center;  */
-  gap: 0.5em;
+  --gap: min(0.5rem, 2vw);
+
+  gap: var(--gap);
+}
+
+button {
+  height: 60px;
+  border: none;
+  border-radius: 0;
+  font-size: 1.4rem;
+}
+button.start {
+  display: block;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 .score {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--gap);
   justify-content: center;
 }
 
@@ -34,32 +47,23 @@
 
 .controls .row {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--gap);
   min-height: 60px;
 }
 
-button {
-  height: 60px;
-  border: none;
-  border-radius: 0;
-  font-size: 1.4rem;
-}
-button.start {
-  display: block;
-  padding: 0 1rem;
-  margin: 0 auto;
+.controls .row button {
+  flex: 1;
 }
 
 .guessrow {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--gap);
 }
 
 .controls .submit {
-  flex: 1 0;
-  /* flex: 0 0 60px; */
+  flex: 2 0;
   font-size: 1.2rem;
   background-color: rgb(149, 203, 250);
 }
@@ -70,8 +74,7 @@ button.start {
 }
 
 .buttons {
-  max-width: calc(240px + 3 * 0.5rem);
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .buttons button {
@@ -81,24 +84,19 @@ button.start {
 /* Game Board   */
 
 .board {
-  /* display: flex;
-  flex-direction: column; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  /* grid-template-rows: 1fr 1fr 1fr 1fr; */
-  gap: 0.5rem;
+  gap: min(0.5rem, 2vw);
   padding: 0 0.5rem;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--gap);
 }
 
 .letter {
-  /* width: 60px; */
-  /* aspect-ratio: 1; */
   position: relative;
 
   font-size: min(11vw, 45px);
