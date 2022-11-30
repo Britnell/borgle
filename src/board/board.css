@@ -50,7 +50,7 @@ button.start {
   background: var(--active);
 }
 .exit {
-  font-size: 1.2rem;
+  font-size: 0.75em;
   padding: 0 0.5rem;
 }
 
