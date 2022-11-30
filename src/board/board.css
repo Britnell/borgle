@@ -111,7 +111,7 @@ button.start {
   display: grid;
   place-items: center;
   cursor: pointer;
-
+  user-select: none;
   transition: border, background-color 0.1s linear;
 }
 
