@@ -9,7 +9,7 @@ export default function Header({ state }: Props) {
   const cancel = () => setPlaying("ready");
 
   return (
-    <header className="scorecontainer">
+    <header className="scoreheader">
       <Counter state={state} />
       <div className="count">
         <div className="guess">Words : {guesses.value.length}</div>

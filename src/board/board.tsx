@@ -85,8 +85,7 @@ export default function Board({ letters, state }: BoardProps) {
   }, [ref, lastTouched]);
 
   return (
-    <div>
-      <Header state={state} />
+    <>
       <main className="boardcontainer">
         <h3>Your Word : </h3>
         <div className="guessrow">
@@ -105,6 +104,6 @@ export default function Board({ letters, state }: BoardProps) {
         </div>
         <Controls />
       </main>
-    </div>
+    </>
   );
 }

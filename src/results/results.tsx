@@ -16,7 +16,7 @@ export default function Results({ restart }: Props) {
     restart();
   };
   return (
-    <div>
+    <main>
       <h2>Results</h2>
 
       <div>
@@ -36,6 +36,6 @@ export default function Results({ restart }: Props) {
           <button onClick={restartClick}>Restart</button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -8,6 +8,7 @@ import "./util/store";
 import { createBoard } from "./util/game";
 
 import "./app.css";
+import Header from "./board/header";
 
 export type StateT = {
   playing: boolean;
@@ -27,29 +28,25 @@ export function App() {
 
   return (
     <>
+      {playing === "playing" ? (
+        <Header state={playState} />
+      ) : (
+        <header>
+          <h1>Borgle </h1>{" "}
+        </header>
+      )}
       {playing === "ready" && (
-        <>
-          <header>
-            <h1>Borgle </h1>{" "}
-          </header>
-          <main className="start">
-            <h2>Start a new game</h2>
-            <button className="button start" onClick={startGame}>
-              Start
-            </button>
-          </main>
-        </>
+        <main className="start">
+          <h2>Start a new game</h2>
+          <button className="button start" onClick={startGame}>
+            Start
+          </button>
+        </main>
       )}
       {playing === "playing" && letters && (
-        <main>
-          <Board letters={letters} state={playState} />
-        </main>
+        <Board letters={letters} state={playState} />
       )}
-      {playing === "finished" && (
-        <main>
-          <Results restart={startGame} />
-        </main>
-      )}
+      {playing === "finished" && <Results restart={startGame} />}
     </>
   );
 }
