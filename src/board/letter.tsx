@@ -23,7 +23,7 @@ const shake = (el: HTMLElement) => {
   el.animate(keyframes, options);
 };
 
-const isUsed = (row: number, col: number, guess: GuessT[]) =>
+export const isUsed = (row: number, col: number, guess: GuessT[]) =>
   guess.find((g) => g.row === row && g.col === col) ? true : false;
 
 export const isNeighbour = (row: number, col: number, guess: GuessT) => {
@@ -60,7 +60,6 @@ const Letter = ({ col, row, letter }: LetterProps) => {
         row,
         col,
         letter,
-        ref,
       },
     ]);
 

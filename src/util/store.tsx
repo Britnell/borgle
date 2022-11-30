@@ -4,7 +4,6 @@ export type GuessT = {
   row: number;
   col: number;
   letter: string;
-  ref: any;
 };
 
 export const guess = signal<GuessT[]>([]);

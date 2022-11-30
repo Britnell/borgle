@@ -3,7 +3,8 @@ import Count from "./count";
 import "./board.css";
 import { useEffect, useRef } from "preact/hooks";
 import { useSignal } from "@preact/signals";
-import Letter from "./letter";
+import Letter, { isNeighbour, isUsed } from "./letter";
+import { guess, GuessT, lastLetter } from "../util/store";
 
 type RowT = Array<string>;
 type BoardT = Array<RowT>;
@@ -21,9 +22,10 @@ const checkSquares = (x: number, y: number, w: number, h: number) => {
   // distance to nearest square (relative)
   const Dx = Math.abs(nearX - Relx);
   const Dy = Math.abs(nearY - Rely);
+  const distance = Math.sqrt(Dx * Dx + Dy * Dy);
 
-  const lim = 0.24;
-  if (Dx > lim || Dy > lim) return;
+  const lim = 0.35;
+  if (distance > lim) return;
   if (nearX % 2 == 0 || nearY % 2 == 0) return; // even ones are midpoints between tiles
 
   const row = (nearY - 1) / 2;
@@ -33,24 +35,17 @@ const checkSquares = (x: number, y: number, w: number, h: number) => {
 
 type PosType = number[];
 
-// const swipeClick = (row: number, col: number) => {
-//   if (!lastLetter.value) return;
-
-//   if (isNeighbour(row, col, lastLetter.value)) {
-//     console.log(row, col);
-//   }
-// };
-
 export default function Board({ letters }: BoardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const logRef = useRef<HTMLDivElement>(null);
   const lastTouched = useRef<PosType>([]);
 
   useEffect(() => {
     if (!ref.current) return;
-    if (!logRef.current) return;
 
     const rect = ref.current.getBoundingClientRect();
+
+    const addLetter = ({ row, col, letter }: GuessT) =>
+      (guess.value = [...guess.value, { letter, row, col }]);
 
     const drag = (ev: TouchEvent) => {
       const touch = ev.touches[0];
@@ -65,18 +60,29 @@ export default function Board({ letters }: BoardProps) {
 
       const isNew = squ[0] !== last[0] || squ[1] !== last[1];
 
-      if (isNew) {
-        console.log(squ);
-        lastTouched.current = squ;
-        if (logRef.current)
-          logRef.current.textContent = ` ${squ[0]} - ${squ[1]}`;
-      }
+      if (!isNew) return;
+      lastTouched.current = squ;
+
+      /// check if valid choice
+      const [row, col] = squ;
+      const touched = {
+        letter: letters[row][col],
+        row,
+        col,
+      };
+
+      // first letter
+      if (!lastLetter.value) return addLetter(touched);
+
+      if (isUsed(row, col, guess.value)) return;
+      if (!isNeighbour(row, col, lastLetter.value)) return;
+      addLetter(touched);
     };
 
     ref.current.addEventListener("touchmove", drag);
     return () =>
       ref.current && ref.current.removeEventListener("touchmove", drag);
-  }, [ref, lastTouched, logRef]);
+  }, [ref, lastTouched]);
 
   return (
     <div className="boardcontainer">
