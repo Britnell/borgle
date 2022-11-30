@@ -16,25 +16,23 @@ export default function Results({ restart }: Props) {
     restart();
   };
   return (
-    <main>
-      <h2>Results</h2>
-
+    <main className="results">
+      <div className="restart">
+        <p>Nice one! - want to play again? </p>
+        <button onClick={restartClick}>Restart</button>
+      </div>
       <div>
+        <h2 className="title">Results</h2>
         <ul>
           {results.value.map((res) => (
-            <li className={res.valid ? "valid" : "invalid"}>
-              <span>{res.valid ? "✔ " : "❌"}</span> -<span>{res.word}</span>
-              <span>+{res.score}</span>
+            <li className={"item " + (res.valid ? "valid" : "invalid")}>
+              <span>{res.valid ? "✔ " : "❌"}</span>
+              <span className="word">{res.word}</span>
+              <span className="points">+{res.score}</span>
             </li>
           ))}
         </ul>
         <h4>Total Score : {score.value}</h4>
-      </div>
-      <div>
-        <h5>Nice one! - want to play again?</h5>
-        <div>
-          <button onClick={restartClick}>Restart</button>
-        </div>
       </div>
     </main>
   );

@@ -6,10 +6,12 @@ type Props = {
 };
 type Timeout = ReturnType<typeof setTimeout> | null;
 
+const gameTime = 3 * 60;
+
 export default function Counter({ state }: Props) {
   const [playing, setPlaying] = state;
 
-  const [time, setTime] = useState(3 * 60);
+  const [time, setTime] = useState(gameTime);
   const timer = useSignal<Timeout>(null);
 
   useEffect(() => {
@@ -24,8 +26,8 @@ export default function Counter({ state }: Props) {
           setTime(time - 1);
           return;
         }
-        setPlaying("finished");
-        setTime(60);
+        setPlaying("results");
+        setTime(gameTime);
       }, 1000);
   }, [playing, timer, time]);
 

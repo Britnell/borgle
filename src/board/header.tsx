@@ -6,7 +6,7 @@ type Props = {
 };
 export default function Header({ state }: Props) {
   const setPlaying = state[1];
-  const cancel = () => setPlaying("ready");
+  const finish = () => setPlaying("results");
 
   return (
     <header className="scoreheader">
@@ -15,8 +15,8 @@ export default function Header({ state }: Props) {
         <div className="guess">Words : {guesses.value.length}</div>
         <div className="score">Score : {score.value}</div>
       </div>
-      <button className="exit" onClick={cancel}>
-        Exit
+      <button className="exit" onClick={finish}>
+        Finish
       </button>
     </header>
   );

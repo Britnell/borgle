@@ -12,11 +12,13 @@
 }
 
 .scoreheader {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
-  font-size: min(1.5rem, 6vw);
+  font-size: 1.5rem;
   padding-top: 0.8rem;
   padding-bottom: 1.2rem;
+  max-width: 500px;
 }
 .scoreheader button {
   height: initial;
@@ -27,6 +29,18 @@
   display: flex;
   gap: var(--gap);
   justify-content: center;
+}
+@media (max-width: 400px) {
+  .count {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100vw;
+  }
+  .scoreheader {
+    margin-bottom: 60px;
+    justify-content: space-between;
+  }
 }
 
 .guess {
@@ -133,10 +147,4 @@
 .selected {
   --border: var(--selected);
   --background: var(--selected);
-}
-
-/* xxx */
-
-.invalid {
-  text-decoration: line-through;
 }

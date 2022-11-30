@@ -1,7 +1,6 @@
 import { useState } from "preact/hooks";
 
 import Board from "./board";
-import Counter from "./counter";
 import Results from "./results";
 
 import "./util/store";
@@ -15,8 +14,10 @@ export type StateT = {
   time: number;
 };
 
+type Playstates = "ready" | "playing" | "results";
+
 export function App() {
-  const playState = useState("ready");
+  const playState = useState<Playstates>("ready");
   const [letters, setLetter] = useState<Array<Array<string>> | null>(null);
   const [playing, setPlaying] = playState;
 
@@ -91,7 +92,7 @@ export function App() {
       {playing === "playing" && letters && (
         <Board letters={letters} state={playState} />
       )}
-      {playing === "finished" && <Results restart={startGame} />}
+      {playing === "results" && <Results restart={startGame} />}
     </>
   );
 }
