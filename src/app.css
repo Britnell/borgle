@@ -7,6 +7,8 @@ body {
   --gray: rgb(233, 233, 237);
   --blue: rgb(172, 215, 245);
 
+  --gap: min(0.5rem, 2vw);
+
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 

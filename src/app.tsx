@@ -27,29 +27,29 @@ export function App() {
 
   return (
     <>
-      <header>
-        <h1>Borgle </h1>{" "}
-      </header>
-      <main>
-        {playing === "ready" && (
-          <div className="start">
+      {playing === "ready" && (
+        <>
+          <header>
+            <h1>Borgle </h1>{" "}
+          </header>
+          <main className="start">
             <h2>Start a new game</h2>
             <button className="button start" onClick={startGame}>
               Start
             </button>
-          </div>
-        )}
-        {playing === "playing" && letters && (
-          <>
-            <Board letters={letters} state={playState} />
-          </>
-        )}
-        {playing === "finished" && (
-          <div>
-            <Results restart={startGame} />
-          </div>
-        )}
-      </main>
+          </main>
+        </>
+      )}
+      {playing === "playing" && letters && (
+        <main>
+          <Board letters={letters} state={playState} />
+        </main>
+      )}
+      {playing === "finished" && (
+        <main>
+          <Results restart={startGame} />
+        </main>
+      )}
     </>
   );
 }

@@ -85,24 +85,26 @@ export default function Board({ letters, state }: BoardProps) {
   }, [ref, lastTouched]);
 
   return (
-    <div className="boardcontainer">
+    <div>
       <Header state={state} />
-      <h3>Your Word : </h3>
-      <div className="guessrow">
-        {guess.value.map((g, i) => (
-          <span className="letter" key={i}>
-            {g.letter}
-          </span>
-        ))}
-      </div>
-      <div className="board" ref={ref}>
-        {letters.map((letters, row) =>
-          letters.map((letter, i) => (
-            <Letter key={i} letter={letter} row={row} col={i} />
-          ))
-        )}
-      </div>
-      <Controls />
+      <main className="boardcontainer">
+        <h3>Your Word : </h3>
+        <div className="guessrow">
+          {guess.value.map((g, i) => (
+            <span className="letter" key={i}>
+              {g.letter}
+            </span>
+          ))}
+        </div>
+        <div className="board" ref={ref}>
+          {letters.map((letters, row) =>
+            letters.map((letter, i) => (
+              <Letter key={i} letter={letter} row={row} col={i} />
+            ))
+          )}
+        </div>
+        <Controls />
+      </main>
     </div>
   );
 }

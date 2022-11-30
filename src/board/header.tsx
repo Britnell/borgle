@@ -9,7 +9,7 @@ export default function Header({ state }: Props) {
   const cancel = () => setPlaying("ready");
 
   return (
-    <div className="scorecontainer">
+    <header className="scorecontainer">
       <Counter state={state} />
       <div className="count">
         <div className="guess">Words : {guesses.value.length}</div>
@@ -18,6 +18,6 @@ export default function Header({ state }: Props) {
       <button className="exit" onClick={cancel}>
         Exit
       </button>
-    </div>
+    </header>
   );
 }
