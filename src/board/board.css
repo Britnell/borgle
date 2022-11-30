@@ -2,10 +2,11 @@
 
 .boardcontainer {
   position: relative;
+  padding: 0 0.5rem;
+
   display: flex;
   flex-direction: column;
   --gap: min(0.5rem, 2vw);
-
   gap: var(--gap);
 }
 
@@ -23,7 +24,8 @@ button.start {
 
 .scorecontainer {
   display: flex;
-  font-size: 1.5rem;
+  flex-flow: row wrap;
+  font-size: min(1.5rem, 6vw);
 }
 .scorecontainer button {
   height: initial;
