@@ -101,8 +101,8 @@ export default function Board({ letters, state }: BoardProps) {
             <Letter key={i} letter={letter} row={row} col={i} />
           ))
         )}
-        <Controls />
       </div>
+      <Controls />
     </div>
   );
 }

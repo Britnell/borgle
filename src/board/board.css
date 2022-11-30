@@ -55,20 +55,21 @@ button.start {
 }
 
 .controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: var(--gap);
   min-height: 60px;
 }
 
-.board .button {
+.controls .button {
   font-size: 1.2rem;
   height: min(70px, 18vw);
 }
-.board .submit {
+.controls .submit {
   grid-column: span 2;
   background-color: rgb(149, 203, 250);
 }
-.board .submit.occured {
+.controls .submit.occured {
   background-color: var(--selected);
   cursor: no-drop;
 }

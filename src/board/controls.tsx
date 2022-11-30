@@ -28,7 +28,7 @@ const Controls = () => {
   const remove = () => (guess.value = guess.value.slice(0, -1));
 
   return (
-    <>
+    <div className="controls">
       <button className="button" onClick={remove}>
         {"<<"}
       </button>
@@ -43,7 +43,7 @@ const Controls = () => {
       >
         +
       </button>
-    </>
+    </div>
   );
 };
 
