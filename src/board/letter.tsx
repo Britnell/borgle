@@ -92,7 +92,8 @@ const Letter = ({ col, row, letter }: LetterProps) => {
         isLast.value ? "last" : isSelected.value ? "selected" : "",
       ].join(" ")}
     >
-      {letter}
+      <div className="square"></div>
+      <div className="content">{letter}</div>
     </div>
   );
 };

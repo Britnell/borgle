@@ -1,9 +1,9 @@
 import Controls from "./controls";
 import Count from "./count";
-import Row from "./row";
 import "./board.css";
 import { useEffect, useRef } from "preact/hooks";
 import { useSignal } from "@preact/signals";
+import Letter from "./letter";
 
 type RowT = Array<string>;
 type BoardT = Array<RowT>;
@@ -82,9 +82,11 @@ export default function Board({ letters }: BoardProps) {
     <div className="boardcontainer">
       <Count />
       <div className="board" ref={ref}>
-        {letters.map((row, i) => (
-          <Row key={i} letters={row} row={i} />
-        ))}
+        {letters.map((letters, row) =>
+          letters.map((letter, i) => (
+            <Letter key={i} letter={letter} row={row} col={i} />
+          ))
+        )}
       </div>
       <div ref={logRef}></div>
 
