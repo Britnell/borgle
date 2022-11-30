@@ -22,8 +22,8 @@ export default function Results({ restart }: Props) {
       <div>
         <ul>
           {results.value.map((res) => (
-            <li>
-              <span>{res.valid ? "v" : "x"}</span> -<span>{res.word}</span>
+            <li className={res.valid ? "valid" : "invalid"}>
+              <span>{res.valid ? "✔ " : "❌"}</span> -<span>{res.word}</span>
               <span>+{res.score}</span>
             </li>
           ))}

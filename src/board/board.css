@@ -140,3 +140,9 @@ button.start {
   --border: var(--selected);
   --background: var(--selected);
 }
+
+/* xxx */
+
+.invalid {
+  text-decoration: line-through;
+}
