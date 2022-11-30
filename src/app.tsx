@@ -47,7 +47,6 @@ export function App() {
         )}
         {playing === "finished" && (
           <div>
-            <button onClick={() => setPlaying("ready")}>done</button>
             <Results restart={startGame} />
           </div>
         )}

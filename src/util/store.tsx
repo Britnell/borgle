@@ -25,6 +25,5 @@ export const lastLetter = computed(() =>
 );
 
 export const score = computed(() => {
-  console.log(" > total ", results.value);
   return results.value.reduce((t, res) => t + (res.valid ? res.score : 0), 0);
 });
