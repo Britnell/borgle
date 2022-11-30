@@ -87,14 +87,22 @@ export default function Board({ letters }: BoardProps) {
   return (
     <div className="boardcontainer">
       <Count />
+      <h3>Your Word : </h3>
+      <div className="guessrow">
+        {guess.value.map((g, i) => (
+          <span className="letter" key={i}>
+            {g.letter}
+          </span>
+        ))}
+      </div>
       <div className="board" ref={ref}>
         {letters.map((letters, row) =>
           letters.map((letter, i) => (
             <Letter key={i} letter={letter} row={row} col={i} />
           ))
         )}
+        <Controls />
       </div>
-      <Controls />
     </div>
   );
 }

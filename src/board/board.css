@@ -42,43 +42,30 @@ button.start {
 }
 
 .controls {
-  padding: 0 0.5rem;
-}
-
-.controls .row {
   display: flex;
   gap: var(--gap);
   min-height: 60px;
 }
 
-.controls .row button {
-  flex: 1;
-}
-
-.guessrow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--gap);
-}
-
-.controls .submit {
-  flex: 2 0;
+.board .button {
   font-size: 1.2rem;
+  height: min(70px, 18vw);
+}
+.board .submit {
+  grid-column: span 2;
   background-color: rgb(149, 203, 250);
 }
-
-.controls .submit.occured {
+.board .submit.occured {
   background-color: var(--selected);
   cursor: no-drop;
 }
 
-.buttons {
-  /* margin: 0 auto; */
-}
-
-.buttons button {
-  flex: 1 0;
+.guessrow {
+  min-height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
 }
 
 /* Game Board   */

@@ -29,29 +29,20 @@ const Controls = () => {
 
   return (
     <>
-      <div className="controls">
-        <div className="row buttons">
-          <button onClick={remove}>{"<<"}</button>
-          <button onClick={clear}>Clear</button>
-          <button
-            ref={submitRef}
-            className={`submit ${hasOccured.value ? "occured" : ""} `}
-            onClick={submit}
-            disabled={hasOccured.value}
-          >
-            +
-          </button>
-        </div>
-        <h3>Your Word : </h3>
-        <div className="guessrow">
-          {guess.value.map((g, i) => (
-            <span className="letter" key={i}>
-              {g.letter}
-            </span>
-          ))}
-        </div>
-        <div className="row"></div>
-      </div>
+      <button className="button" onClick={remove}>
+        {"<<"}
+      </button>
+      <button className="button" onClick={clear}>
+        Clear
+      </button>
+      <button
+        ref={submitRef}
+        className={`button submit ${hasOccured.value ? "occured" : ""} `}
+        onClick={submit}
+        disabled={hasOccured.value}
+      >
+        +
+      </button>
     </>
   );
 };
