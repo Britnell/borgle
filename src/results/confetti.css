@@ -41,7 +41,7 @@
   /* position */
   left: calc(var(--l) * 100%);
   --top-range: 300px;
-  --top: calc(-1 * var(--r) * var(--top-range));
+  --top: calc(-1 * var(--t) * var(--top-range));
   --vel: calc(var(--v) * 300px);
 
   /* run */

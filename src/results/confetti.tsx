@@ -11,8 +11,9 @@ const Confetti = () => {
         <div
           style={{
             "--l": Math.random(),
-            "--r": Math.random(),
+            "--t": Math.random(),
             "--v": Math.random(),
+            "--r": Math.random(),
           }}
           key={i}
           className="piece"
