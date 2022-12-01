@@ -11,7 +11,6 @@ const Confetti = () => {
         <div
           style={{
             "--l": Math.random(),
-            "--t": Math.random(),
             "--r": Math.random(),
             "--v": Math.random(),
           }}
