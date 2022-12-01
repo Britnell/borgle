@@ -4,6 +4,8 @@
 
 For Funsies as I forgot to bring it with me
 
+Hosted at [borgle-game.netlify.app](https://borgle-game.netlify.app/)
+
 # TO DO
 
 - [x] dictionary hack for plurals
