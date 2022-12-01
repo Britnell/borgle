@@ -90,7 +90,60 @@ header .title {
   font-size: 1.2rem;
   gap: 0.5rem;
 }
+.results .restart h2 {
+  font-size: 2rem;
+}
 .results .restart button {
   padding: 0.2rem 0.5rem;
   font-size: 1.2rem;
+}
+
+/* Game header */
+
+.scoreheader {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 1.5rem;
+  padding-top: 0.8rem;
+  padding-bottom: 1.2rem;
+  max-width: 550px;
+}
+.scoreheader button {
+  height: initial;
+}
+
+.count {
+  flex-grow: 1;
+  display: flex;
+  gap: var(--gap);
+  justify-content: center;
+}
+@media (max-width: 400px) {
+  .count {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100vw;
+  }
+  .scoreheader {
+    margin-bottom: 60px;
+    justify-content: space-between;
+  }
+}
+
+.score {
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  background: var(--active);
+}
+.exit {
+  font-size: 0.75em;
+  padding: 0 0.5rem;
+}
+
+.guess {
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  background: var(--blue);
 }

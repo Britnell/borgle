@@ -3,7 +3,7 @@ import Header from "./header";
 import "./board.css";
 import { useEffect, useRef } from "preact/hooks";
 import Letter, { isNeighbour, isUsed } from "./letter";
-import { guess, GuessT, lastLetter } from "../util/store";
+import { guess, GuessT, lastLetter, word } from "../util/store";
 
 type RowT = Array<string>;
 type BoardT = Array<RowT>;
@@ -88,13 +88,14 @@ export default function Board({ letters, state }: BoardProps) {
     <>
       <main className="boardcontainer">
         <h3>Your Word : </h3>
-        <div className="guessrow">
-          {guess.value.map((g, i) => (
+        <p className={`guessword ${word.value.length > 6 ? "xl" : ""}`}>
+          {word.value.toLowerCase()}
+          {/* {guess.value.map((g, i) => (
             <span className="letter" key={i}>
               {g.letter}
             </span>
-          ))}
-        </div>
+          ))} */}
+        </p>
         <div className="board" ref={ref}>
           {letters.map((letters, row) =>
             letters.map((letter, i) => (

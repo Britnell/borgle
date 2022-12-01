@@ -18,6 +18,7 @@ export default function Results({ restart }: Props) {
   return (
     <main className="results">
       <div className="restart">
+        <h2>🥳🎉</h2>
         <p>Nice one! - want to play again? </p>
         <button onClick={restartClick}>Restart</button>
       </div>

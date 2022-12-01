@@ -11,54 +11,6 @@
   margin: 0;
 }
 
-.scoreheader {
-  position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  font-size: 1.5rem;
-  padding-top: 0.8rem;
-  padding-bottom: 1.2rem;
-  max-width: 500px;
-}
-.scoreheader button {
-  height: initial;
-}
-
-.count {
-  flex-grow: 1;
-  display: flex;
-  gap: var(--gap);
-  justify-content: center;
-}
-@media (max-width: 400px) {
-  .count {
-    position: absolute;
-    top: 55px;
-    left: 0;
-    width: 100vw;
-  }
-  .scoreheader {
-    margin-bottom: 60px;
-    justify-content: space-between;
-  }
-}
-
-.guess {
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
-  background: var(--blue);
-}
-
-.score {
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
-  background: var(--active);
-}
-.exit {
-  font-size: 0.75em;
-  padding: 0 0.5rem;
-}
-
 .controls {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -79,12 +31,15 @@
   cursor: no-drop;
 }
 
-.guessrow {
-  min-height: 70px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--gap);
+.guessword {
+  font-size: 3.5rem;
+  /* line-height: 3.5rem; */
+  text-align: center;
+  /* padding: 0.5rem; */
+  min-height: 76px;
+}
+.guessword.xl {
+  font-size: 3rem;
 }
 
 /* Game Board   */
