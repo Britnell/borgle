@@ -38,7 +38,6 @@ export function App() {
       )}
       {playing === "ready" && (
         <main className="ready">
-          <h2>Start a new game</h2>
           <div className="board">
             <div className="letter">
               <div className="square"></div>
