@@ -3,6 +3,7 @@ import { checkResults } from "../util/game";
 import { guess, guesses } from "../util/store";
 
 import { results, score } from "../util/store";
+import Confetti from "./confetti";
 
 type Props = {
   restart: () => void;
@@ -35,6 +36,7 @@ export default function Results({ restart }: Props) {
         </ul>
         <h4>Total Score : {score.value}</h4>
       </div>
+      <Confetti />
     </main>
   );
 }

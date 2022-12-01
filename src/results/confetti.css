@@ -1,0 +1,50 @@
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+@keyframes fall {
+  from {
+    top: calc(0% + var(--top));
+  }
+  to {
+    top: calc(100% + var(--top-range) + var(--top) + var(--vel));
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(calc(90deg * var(--r) + 0deg))
+      rotateY(calc(90deg * var(--r) + 0deg));
+  }
+  100% {
+    transform: rotateX(calc(90deg * var(--r) + 180deg))
+      rotateY(calc(90deg * var(--r) + 180deg));
+  }
+}
+
+.piece {
+  --s: 8px;
+  width: var(--s);
+  height: var(--s);
+
+  /* border-radius: 50%; */
+  --col: calc(var(--r) * 360deg);
+  background-color: hsl(var(--col), 100%, 50%);
+  position: absolute;
+
+  /* position */
+  left: calc(var(--l) * 100%);
+  --top-range: 300px;
+  --top: calc(-1 * var(--t) * var(--top-range));
+  --vel: calc(var(--v) * 300px);
+
+  /* run */
+  animation: fall 4s linear forwards,
+    rotate calc(0.5s + 0.5s * var(--r)) ease-in-out infinite;
+}

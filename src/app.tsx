@@ -17,7 +17,7 @@ export type StateT = {
 type Playstates = "ready" | "playing" | "results";
 
 export function App() {
-  const playState = useState<Playstates>("ready");
+  const playState = useState<Playstates>("results");
   const [letters, setLetter] = useState<Array<Array<string>> | null>(null);
   const [playing, setPlaying] = playState;
 
